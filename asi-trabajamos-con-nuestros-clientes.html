@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Así trabajamos con nuestros clientes | EXECON</title>
+<meta name="description" content="Conoce los cuatro principios que guían la forma en que EXECON acompaña a sus clientes: entender antes de proponer, ejecutar con consistencia, responder con rapidez y evolucionar en conjunto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800;900&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --verde:       #89dc65;
+    --verde-alto:  #b7ec9d;
+    --verde-bajo:  #57a83c;
+    --azul:        #004d71;
+    --azul-alto:   #0a6b96;
+    --azul-bajo:   #00293c;
+    --gris:        #5b6670;
+    --gris-alto:   #8b949c;
+    --gris-bajo:   #3a4148;
+    --papel:       #f4f7f6;
+    --papel-2:     #e9eef0;
+    --blanco:      #ffffff;
+
+    --g-hero:      linear-gradient(125deg, var(--azul-bajo) 0%, var(--azul) 52%, var(--gris) 100%);
+    --g-cta:       linear-gradient(115deg, var(--verde-bajo) 0%, var(--verde) 55%, var(--verde-alto) 100%);
+    --g-card:      linear-gradient(160deg, var(--azul) 0%, var(--azul-bajo) 100%);
+    --g-band:      linear-gradient(120deg, var(--azul-bajo) 0%, var(--azul) 45%, var(--verde-bajo) 100%);
+    --g-soft:      linear-gradient(180deg, var(--papel) 0%, var(--papel-2) 100%);
+
+    --display: 'Exo 2', sans-serif;
+    --cond-b:  'Roboto Condensed', sans-serif;
+    --cond-r:  'Roboto Condensed', sans-serif;
+
+    --maxw: 1240px;
+    --radius: 14px;
+    --sombra: 0 20px 45px -20px rgba(0,41,60,.35);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:var(--cond-r);
+    font-weight:400;
+    color:var(--gris-bajo);
+    background:var(--papel);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ margin:0; padding:0; list-style:none; }
+  h1,h2,h3,h4{ margin:0; font-weight:700; }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 clamp(20px,4vw,48px); }
+  .icon{ width:1em; height:1em; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+
+  .raya{ width:46px; height:3px; border-radius:3px; background:var(--g-cta); margin-bottom:18px; }
+  .raya.centrada{ margin-left:auto; margin-right:auto; }
+
+  h2.titulo{
+    font-family:var(--display); font-weight:800;
+    font-size:clamp(1.9rem, 3.2vw, 2.7rem);
+    line-height:1.12; letter-spacing:-.01em;
+    color:var(--azul-bajo);
+    max-width:20ch;
+  }
+  section.on-dark h2.titulo{ color:var(--blanco); }
+  .subtitulo-txt{
+    font-family:var(--cond-r); font-weight:400;
+    font-size:1.05rem; color:var(--gris);
+    max-width:52ch; margin-top:14px;
+  }
+  section.on-dark .subtitulo-txt{ color:#c9d6db; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--cond-b); font-weight:700;
+    font-size:.92rem; letter-spacing:.03em; text-transform:uppercase;
+    padding:15px 26px; border-radius:999px; border:2px solid transparent;
+    background-origin:border-box; background-clip:border-box;
+    cursor:pointer; transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+    white-space:nowrap;
+  }
+  .btn svg{ width:16px; height:16px; transition:transform .25s ease; }
+  .btn:hover svg{ transform:translateX(3px); }
+  .btn-primario{ background:var(--g-cta); color:var(--azul-bajo); box-shadow:0 12px 28px -10px rgba(87,168,60,.55); border:none; padding:17px 28px; }
+  .btn-primario:hover{ transform:translateY(-2px); box-shadow:0 16px 34px -10px rgba(87,168,60,.7); }
+  .btn-secundario{ border-color:rgba(255,255,255,.55); color:var(--blanco); }
+  .btn-secundario:hover{ background:rgba(255,255,255,.12); transform:translateY(-2px); }
+  .btn-oscuro{ border-color:var(--azul); color:var(--azul); }
+  .btn-oscuro:hover{ background:var(--azul); color:var(--blanco); transform:translateY(-2px); }
+  .btn-claro-sobre-gradiente{ background:var(--blanco); color:var(--azul-bajo); }
+  .btn-claro-sobre-gradiente:hover{ transform:translateY(-2px); box-shadow:0 16px 34px -12px rgba(0,0,0,.35); }
+  .link-flecha{
+    display:inline-flex; align-items:center; gap:8px; position:relative;
+    font-family:var(--cond-b); font-weight:700; font-size:.95rem;
+    color:var(--azul); padding-bottom:6px;
+    transition:gap .2s ease, color .2s ease;
+  }
+  .link-flecha::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:3px; border-radius:3px;
+    background:var(--g-cta);
+  }
+  .link-flecha svg{ width:15px; height:15px; }
+  .link-flecha:hover{ gap:12px; color:var(--verde-bajo); }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.mostrar{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ============ HEADER ============ */
+  header.principal{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.86); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(0,41,60,.08);
+    box-shadow:0 4px 20px -12px rgba(0,41,60,.15);
+  }
+  .nav-fila{ display:flex; align-items:center; height:76px; gap:32px; }
+  .logo{
+    font-family:var(--display); font-weight:900; font-size:1.5rem; color:var(--azul-bajo);
+    letter-spacing:.02em; display:flex; align-items:center; gap:10px;
+  }
+  .logo span{ color:var(--verde-bajo); }
+  .logo .punto{ width:9px; height:9px; border-radius:50%; background:var(--verde-bajo); box-shadow:0 0 0 5px rgba(87,168,60,.18); }
+  .logo-placeholder{
+    display:flex; align-items:center; justify-content:center;
+    width:150px; height:38px; border:1.5px dashed var(--gris-alto); border-radius:8px;
+    font-family:var(--cond-b); font-weight:700; font-size:.66rem; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--gris); background:rgba(91,102,112,.05); white-space:nowrap;
+  }
+
+  nav.principal-links{ display:flex; align-items:center; gap:6px; }
+  nav.principal-links > .item{ position:relative; }
+  nav.principal-links > .item > a{
+    display:flex; align-items:center; gap:6px;
+    font-family:var(--cond-b); font-weight:700; font-size:.86rem; letter-spacing:.02em; text-transform:uppercase;
+    color:var(--gris-bajo); padding:10px 14px; border-radius:8px; transition:color .2s ease, background .2s ease;
+  }
+  nav.principal-links > .item > a:hover{ color:var(--azul); background:rgba(0,77,113,.07); }
+  nav.principal-links > .item > a svg{ width:13px; height:13px; transition:transform .2s ease; }
+  nav.principal-links > .item:hover > a svg{ transform:rotate(180deg); }
+
+  .submenu{
+    position:absolute; top:calc(100% + 10px); left:0; min-width:260px;
+    background:var(--blanco); border-radius:12px; box-shadow:var(--sombra);
+    padding:10px; opacity:0; visibility:hidden; transform:translateY(8px);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+  }
+  nav.principal-links > .item:hover .submenu{ opacity:1; visibility:visible; transform:translateY(0); }
+  .submenu a{
+    display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:8px;
+    font-family:var(--cond-r); font-weight:400; font-size:.92rem; color:var(--azul-bajo);
+    transition:background .2s ease, color .2s ease;
+  }
+  .submenu a svg{ width:16px; height:16px; color:var(--verde-bajo); flex-shrink:0; }
+  .submenu a:hover{ background:var(--papel-2); color:var(--azul); }
+
+  .nav-cta{ display:flex; align-items:center; gap:18px; margin-left:auto; }
+  .nav-cta .btn{ padding:12px 22px; font-size:.82rem; }
+  .nav-cta .btn-primario{ padding:14px 24px; }
+  .nav-cta .btn-secundario{ border-color:var(--azul); color:var(--azul); }
+  .nav-cta .btn-secundario:hover{ background:rgba(0,77,113,.08); }
+  .hamburguesa{ display:none; background:none; border:none; color:var(--azul-bajo); cursor:pointer; padding:6px; }
+  .hamburguesa svg{ width:26px; height:26px; }
+
+  @media (max-width: 980px){
+    nav.principal-links{
+      position:fixed; inset:76px 0 0 0; background:var(--azul-bajo);
+      flex-direction:column; align-items:stretch; padding:18px; gap:4px;
+      transform:translateX(100%); transition:transform .3s ease; overflow-y:auto;
+    }
+    nav.principal-links.abierto{ transform:translateX(0); }
+    nav.principal-links > .item > a{ width:100%; justify-content:space-between; padding:16px 14px; color:#dbe6ea; }
+    nav.principal-links > .item > a:hover{ color:var(--blanco); background:rgba(255,255,255,.08); }
+    .submenu{ position:static; opacity:1; visibility:visible; transform:none; box-shadow:none; background:rgba(255,255,255,.05); display:none; }
+    nav.principal-links > .item.abierto .submenu{ display:block; }
+    .submenu a{ color:#dbe6ea; }
+    .submenu a:hover{ background:rgba(255,255,255,.08); color:var(--blanco); }
+    .nav-cta .btn-secundario{ display:none; }
+    .hamburguesa{ display:block; }
+  }
+
+  /* ============ HERO (solo encabezado + CTA + gráfico) ============ */
+  .hero{
+    position:relative; overflow:hidden;
+    background:var(--g-hero); color:var(--blanco);
+    padding:clamp(32px,5vw,52px) 0;
+    display:flex; align-items:center;
+  }
+  .hero-foto{
+    position:absolute; inset:0; z-index:0;
+    background-image:
+      linear-gradient(125deg, rgba(0,41,60,.93) 0%, rgba(0,77,113,.88) 55%, rgba(91,102,112,.85) 100%)  /* IMAGEN: agregar aqui , url('URL-DEL-WEBHOST') antes del ; */;
+    background-size:cover; background-position:center;
+  }
+  .hero-glow{
+    position:absolute; width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(137,220,101,.32), transparent 70%);
+    top:-130px; right:-100px; pointer-events:none; filter:blur(10px); z-index:0;
+  }
+  .hero-grid{
+    position:relative; z-index:1; display:grid; grid-template-columns:1.35fr 1fr; gap:clamp(24px,5vw,56px);
+    align-items:center; width:100%;
+  }
+  .hero h1{
+    font-family:var(--display); font-weight:800; font-size:clamp(1.9rem,3.6vw,3rem);
+    line-height:1.13; letter-spacing:-.01em; color:var(--blanco);
+    max-width:26ch;
+  }
+  .hero h1 em{ font-style:normal; color:var(--verde); }
+  .hero-sub{
+    font-family:var(--display); font-weight:800; font-size:clamp(1.9rem,3.6vw,3rem);
+    color:var(--blanco); margin:14px 0 0; line-height:1.13; letter-spacing:-.01em; max-width:26ch;
+  }
+  .hero-cta{ display:flex; flex-wrap:wrap; gap:16px; margin-top:26px; }
+
+  /* --- diagrama de red (elemento firma, agrandado para aprovechar el espacio) --- */
+  .diagrama{ position:relative; width:100%; max-width:310px; margin:0 auto; }
+  .diagrama svg{ width:100%; height:auto; overflow:visible; }
+  .linea-red{ stroke:rgba(183,236,157,.55); stroke-width:1.4; stroke-dasharray:5 6; animation:fluir 22s linear infinite; }
+  @keyframes fluir{ to{ stroke-dashoffset:-220; } }
+  .pulso{ animation:pulsar 2.6s ease-in-out infinite; }
+  .pulso:nth-child(2){ animation-delay:.4s; }
+  .pulso:nth-child(3){ animation-delay:.8s; }
+  .pulso:nth-child(4){ animation-delay:1.2s; }
+  .pulso:nth-child(5){ animation-delay:1.6s; }
+  .pulso:nth-child(6){ animation-delay:2s; }
+  @keyframes pulsar{ 0%,100%{ opacity:.35; r:3.4; } 50%{ opacity:1; r:5; } }
+  @media (prefers-reduced-motion: reduce){ .linea-red{ animation:none; } .pulso{ animation:none; } }
+
+  @media (max-width:980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero h1{ max-width:none; }
+    .diagrama{ max-width:300px; margin-top:16px; }
+  }
+
+  /* ============ SECCIÓN DE INTRODUCCIÓN (distinta de la del hero) ============ */
+  .intro{
+    background:var(--papel);
+    padding-top:clamp(26px,5vw,56px);
+    padding-bottom:clamp(24px,5vw,52px);
+  }
+  .intro-lead{
+    text-align:center; max-width:52ch; margin:0 auto;
+    font-family:var(--display); font-weight:600; font-size:clamp(1.3rem,2.2vw,1.7rem);
+    line-height:1.45; color:var(--azul-bajo);
+  }
+  .intro-divisor{ display:flex; justify-content:center; align-items:center; gap:10px; margin:34px 0; }
+  .intro-divisor .raya-h{ width:80px; height:3px; border-radius:3px; background:linear-gradient(90deg, transparent, var(--verde)); }
+  .intro-divisor .raya-h.derecha{ background:linear-gradient(90deg, var(--verde), transparent); }
+  .intro-divisor .punto-mid{ width:8px; height:8px; border-radius:50%; background:var(--verde); flex:none; }
+  .intro-cols{
+    display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,4vw,52px);
+    max-width:960px; margin:0 auto;
+  }
+  .intro-cols p{
+    font-family:var(--cond-r); font-size:1rem; color:var(--gris-bajo); margin:0;
+  }
+  .intro-cols p strong{ color:var(--azul); font-weight:700; }
+  @media (max-width:760px){ .intro-cols{ grid-template-columns:1fr; } }
+
+  /* ============ SECCIONES BASE ============ */
+  section{ position:relative; }
+  section.claro{ background:var(--g-soft); }
+  section.on-dark{ background:var(--g-band); color:var(--blanco); }
+  #servicios{
+    background-image:
+      linear-gradient(120deg, rgba(0,41,60,.55) 0%, rgba(0,77,113,.5) 45%, rgba(91,102,112,.5) 100%)  /* IMAGEN: agregar aqui , url('URL-DEL-WEBHOST') antes del ; */;
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+  }
+  #industrias{
+    background-image:
+      linear-gradient(120deg, rgba(0,41,60,.5) 0%, rgba(0,77,113,.45) 45%, rgba(91,102,112,.45) 100%);  /* IMAGEN: agregar aqui , url('URL-DEL-WEBHOST') antes del ; */
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+  }
+  .pad{ padding:clamp(32px,5vw,58px) 0; }
+  #escenarios{ padding-top:calc(clamp(32px,5vw,58px) - 12px); }
+  #industrias.pad{ padding:clamp(24px,5vw,48px) 0; }
+  #servicios.pad{ padding:clamp(26px,5vw,50px) 0; }
+  #porque-execon.pad{ padding:clamp(24px,5vw,48px) 0; }
+
+  /* ============ ESCENARIOS (bullets + gráfico de íconos) ============ */
+  .escenarios-grid{ display:grid; grid-template-columns:1fr 380px; gap:clamp(30px,5vw,56px); align-items:stretch; }
+  @media (max-width:760px){ .escenarios-grid{ grid-template-columns:1fr; } }
+  .lista-check{ margin-top:26px; display:flex; flex-direction:column; gap:14px; }
+  .lista-check li{
+    display:flex; align-items:flex-start; gap:14px;
+    background:var(--blanco); border:1px solid #e1e8ea; border-radius:12px;
+    padding:16px 18px; box-shadow:var(--sombra);
+  }
+  .lista-check .icobox{
+    flex:none; width:41px; height:41px; border-radius:10px;
+    background:var(--verde); display:flex; align-items:center; justify-content:center;
+    color:var(--azul-bajo);
+  }
+  .lista-check .icobox svg{ width:22px; height:22px; }
+  .lista-check p{ margin:0; font-family:var(--cond-r); font-size:1.1675rem; color:var(--gris-bajo); padding-top:6px; }
+
+  .panel-grafico{
+    position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--sombra);
+    background-image:
+      linear-gradient(190deg, rgba(0,41,60,.1) 0%, rgba(0,20,28,.88) 100%)  /* IMAGEN: agregar aqui , url('URL-DEL-WEBHOST') antes del ; */;
+    background-size:cover; background-position:left center;
+    display:flex; align-items:flex-end; padding:24px;
+    min-height:340px;
+  }
+  .panel-grafico .link-flecha{
+    color:var(--verde-alto);
+    font-size:.95rem; line-height:1.3;
+  }
+  .panel-grafico .link-flecha:hover{ color:var(--blanco); }
+
+  /* ============ SOLUCIONES (tarjetas, grid que llena el espacio) ============ */
+  .servicios-grid{
+    margin-top:44px; display:grid; gap:22px;
+    grid-template-columns:repeat(6,1fr);
+  }
+  .servicios-grid .card{ grid-column:span 2; }
+  .servicios-grid .card:nth-child(1),
+  .servicios-grid .card:nth-child(2){ grid-column:span 3; }
+  @media (max-width:900px){
+    .servicios-grid{ grid-template-columns:repeat(2,1fr); }
+    .servicios-grid .card, .servicios-grid .card:nth-child(1), .servicios-grid .card:nth-child(2){ grid-column:span 1; }
+  }
+  @media (max-width:560px){ .servicios-grid{ grid-template-columns:1fr; } }
+
+  .card{
+    background:var(--blanco);
+    border:1px solid var(--papel-2); border-radius:16px; padding:16px 22px;
+    display:flex; flex-direction:column; gap:8px;
+    box-shadow:var(--sombra);
+  }
+  .card-encabezado{ display:flex; align-items:center; gap:14px; }
+  .card .icobox{
+    width:46px; height:46px; border-radius:12px; background:var(--verde);
+    display:flex; align-items:center; justify-content:center; color:var(--azul-bajo); flex-none;
+  }
+  .card .icobox svg{ width:23px; height:23px; }
+  .card h3{ font-family:var(--cond-b); font-weight:700; font-size:1.2675rem; text-transform:uppercase; letter-spacing:.02em; }
+  .card h3 a{ color:var(--azul-bajo); display:inline-flex; align-items:center; gap:8px; }
+  .card h3 a:hover{ color:var(--verde-bajo); }
+  .card h3 a svg{ width:15px; height:15px; opacity:0; transform:translateX(-4px); transition:opacity .2s ease, transform .2s ease; }
+  .card h3 a:hover svg{ opacity:1; transform:translateX(0); }
+  .card p{ font-family:var(--cond-r); font-size:.94rem; color:var(--gris); margin:0; }
+
+  .centrado-btn{ display:flex; justify-content:center; margin-top:42px; }
+
+  /* ============ PRINCIPIOS ============ */
+  .cabecera-centrada{ text-align:center; max-width:640px; margin:0 auto; }
+  .cabecera-centrada .subtitulo-txt{ margin-left:auto; margin-right:auto; }
+  .principios-grid{
+    position:relative;
+    margin-top:42px; display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+  }
+  .principios-grid .segmento-linea{
+    position:absolute; top:43.5px; height:3px; border-radius:3px; transform:translateY(-50%);
+    background:var(--g-cta); z-index:0;
+  }
+  .principios-grid .segmento-linea:nth-of-type(1){ left:calc(12.5% + 36.5px); width:calc(25% - 85px); }
+  .principios-grid .segmento-linea:nth-of-type(2){ left:calc(37.5% + 42.5px); width:calc(25% - 85px); }
+  .principios-grid .segmento-linea:nth-of-type(3){ left:calc(62.5% + 48.5px); width:calc(25% - 85px); }
+  .principios-grid .conector{
+    position:absolute; top:43.5px; width:14px; height:14px; border-radius:50%;
+    background:var(--verde); border:2px solid var(--blanco);
+    transform:translate(-50%,-50%); z-index:1;
+  }
+  .principios-grid .conector:nth-of-type(4){ left:calc(25% - 6px); }
+  .principios-grid .conector:nth-of-type(5){ left:50%; }
+  .principios-grid .conector:nth-of-type(6){ left:calc(75% + 6px); }
+  @media (max-width:900px){
+    .principios-grid{ grid-template-columns:repeat(2,1fr); }
+    .principios-grid .segmento-linea, .principios-grid .conector{ display:none; }
+  }
+  @media (max-width:520px){ .principios-grid{ grid-template-columns:1fr; } }
+  .principio{
+    position:relative; z-index:2; height:100%;
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+  }
+  .principio .icobox{
+    width:87px; height:87px; border-radius:50%; background:var(--verde);
+    display:flex; align-items:center; justify-content:center; color:var(--azul-bajo);
+    margin-bottom:-20px; flex:none; position:relative; z-index:3;
+    box-shadow:0 8px 14px -6px rgba(87,168,60,.75);
+  }
+  .principio .icobox svg{ width:43px; height:43px; stroke-width:1.6; }
+  .principio-card{
+    width:100%; flex:1; background:var(--blanco); border-radius:16px;
+    padding:42px 20px 22px; box-shadow:var(--sombra);
+    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+  }
+  .principio-texto{ display:flex; flex-direction:column; align-items:center; }
+  .principio h3{
+    font-family:var(--cond-b); font-weight:700; font-size:1.2375rem; color:var(--azul-bajo);
+    line-height:1.3; margin:0 0 8px;
+  }
+  .principio p{ font-family:var(--cond-r); font-size:1rem; color:var(--gris); margin:0; line-height:1.5; max-width:20ch; }
+  .principio .mini-raya{ width:38px; height:3px; border-radius:3px; background:var(--g-cta); margin-top:16px; flex:none; }
+
+  /* ============ INDUSTRIAS ============ */
+  .industrias-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,5vw,60px); align-items:center; }
+  .pildoras{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .pildora{
+    display:flex; align-items:flex-end; gap:12px; padding:18px 18px; border-radius:14px;
+    color:var(--blanco); position:relative; overflow:hidden; min-height:132px;
+    box-shadow:0 14px 32px -18px rgba(0,20,30,.55);
+    background-size:cover; background-position:center;
+  }
+  .pildora::before{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(200deg, rgba(0,41,60,.08) 0%, rgba(0,20,28,.5) 100%);
+  }
+  .pildora:nth-child(1){ background-image:none; background-color:var(--papel-2); /* IMAGEN: agregar aqui background-image:url('URL-DEL-WEBHOST') */ }
+  .pildora:nth-child(2){ background-image:none; background-color:var(--papel-2); /* IMAGEN: agregar aqui background-image:url('URL-DEL-WEBHOST') */ }
+  .pildora:nth-child(3){ background-image:none; background-color:var(--papel-2); /* IMAGEN: agregar aqui background-image:url('URL-DEL-WEBHOST') */ }
+  .pildora:nth-child(4){ background-image:none; background-color:var(--papel-2); /* IMAGEN: agregar aqui background-image:url('URL-DEL-WEBHOST') */ }
+  .pildora .icobox{
+    position:relative; width:38px; height:38px; border-radius:10px; background:rgba(137,220,101,.9);
+    display:flex; align-items:center; justify-content:center; flex-none; color:var(--azul-bajo);
+  }
+  .pildora .icobox svg{ width:20px; height:20px; }
+  .pildora span{ position:relative; font-family:var(--cond-b); font-weight:700; font-size:.95rem; letter-spacing:.01em; text-shadow:0 1px 3px rgba(0,0,0,.75), 0 2px 8px rgba(0,0,0,.5); }
+
+  /* ============ CTA FINAL ============ */
+  .cta-final{
+    background:var(--blanco);
+    padding:clamp(24px,4vw,42px) 0;
+  }
+  .cta-final .wrap{
+    display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(28px,4vw,48px); align-items:center;
+  }
+  .cta-final-foto{
+    width:100%; height:100%; min-height:220px; border-radius:20px; overflow:hidden;
+    background-image:url('imagenes/cta-foto.png'); background-color:var(--papel-2);
+    background-size:cover; background-position:center;
+    box-shadow:0 20px 40px -18px rgba(0,41,60,.3);
+  }
+  .cta-final-contenido{ text-align:left; }
+  .cta-final h2.titulo{
+    background:linear-gradient(120deg, var(--azul) 0%, var(--azul-bajo) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    margin:0; font-size:clamp(2.275rem,3.4vw,3.075rem); max-width:none;
+  }
+  .cta-final .subtitulo-txt{ color:var(--gris-bajo); opacity:1; margin:16px 0 0; font-size:1.175rem; max-width:48ch; }
+  .cta-final .btn{ margin-top:28px; }
+  .cta-final .btn-primario{
+    box-shadow:0 16px 34px -10px rgba(87,168,60,.5);
+  }
+  .cta-final .btn-primario:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 20px 40px -8px rgba(0,41,60,.55);
+  }
+  @media (max-width:760px){
+    .cta-final .wrap{ grid-template-columns:1fr; }
+    .cta-final-foto{ min-height:200px; order:-1; }
+    .cta-final-contenido{ text-align:center; }
+    .cta-final .subtitulo-txt{ margin-left:auto; margin-right:auto; }
+  }
+
+  /* ============ FOOTER ============ */
+  footer{ background:var(--azul-bajo); color:#a9bcc3; padding:28px 0 14px; }
+  .footer-grid{ display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:26px; align-items:start; }
+  footer .logo{ margin-bottom:12px; }
+  .logo-placeholder.en-oscuro{
+    border-color:rgba(255,255,255,.32); color:#c9d6db; background:rgba(255,255,255,.05);
+  }
+  footer h4{ font-family:var(--cond-b); font-weight:700; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--blanco); margin-bottom:12px; }
+  footer ul{ margin:0; }
+  footer ul li{ margin-bottom:8px; }
+  footer ul.footer-nav-paginas li{ margin-bottom:1px; }
+  footer ul.footer-nav-paginas li a{ color:var(--blanco); }
+  footer ul li a{ font-family:var(--cond-r); font-size:.9rem; transition:color .2s ease; }
+  footer ul li a:hover{ color:var(--verde-alto); }
+  .footer-contacto-fila{ display:flex; align-items:flex-start; gap:9px; margin-bottom:9px; }
+  .footer-contacto-fila:last-child{ margin-bottom:0; }
+  .footer-contacto-fila svg{ width:15px; height:15px; color:var(--verde-alto); flex:none; margin-top:3px; }
+  .footer-direccion{ font-family:var(--cond-r); font-size:.88rem; line-height:1.4; margin:0; font-style:normal; color:#a9bcc3; }
+  .footer-contacto-fila a{ font-family:var(--cond-r); font-size:.88rem; color:#a9bcc3; transition:color .2s ease; }
+  .footer-contacto-fila a:hover{ color:var(--verde-alto); }
+  .footer-legal{
+    margin-top:24px; padding-top:16px; border-top:1px solid rgba(255,255,255,.1);
+    display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:10px;
+    text-align:center; font-family:var(--cond-r); font-size:.8rem; color:#8ba0a8;
+  }
+  .footer-legal .separador{ color:rgba(255,255,255,.25); }
+  .footer-legal .footer-aviso{
+    font-family:var(--cond-b); font-weight:700; font-size:.8rem; color:var(--verde-alto);
+    border-bottom:1px solid rgba(183,236,157,.4); padding-bottom:1px; transition:color .2s ease, border-color .2s ease;
+  }
+  .footer-legal .footer-aviso:hover{ color:var(--blanco); border-color:var(--blanco); }
+  @media (max-width:900px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .footer-grid{ grid-template-columns:1fr; } .escenarios-grid, .industrias-grid{ grid-template-columns:1fr; } }
+</style>
+<style>
+  /* ============ PÁGINA: ASÍ TRABAJAMOS (v2) ============ */
+
+  /* --- HERO tipo banner --- */
+  .hero-interior{
+    position:relative; overflow:hidden;
+    background:var(--g-hero); color:var(--blanco);
+    padding:clamp(24px,3.2vw,36px) 0;
+  }
+  .hero-interior-foto{
+    position:absolute; inset:0; z-index:0;
+    background-image: url('imagenes/fondo-geometrico.jpg');
+    background-size:cover; background-position:center 30%;
+}
+  .hero-interior-glow{
+    position:absolute; width:280px; height:280px; border-radius:50%;
+    background:radial-gradient(circle, rgba(137,220,101,.26), transparent 70%);
+    top:-110px; left:-70px; pointer-events:none; filter:blur(10px); z-index:0;
+  }
+  .hero-interior .wrap{
+    position:relative; z-index:1; text-align:center;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .hero-interior .raya.centrada{ margin-bottom:2px; }
+  .hero-interior h1{
+    font-family:var(--display); font-weight:800;
+    font-size:clamp(1.93rem, calc(2.5vw + 0.625rem), 2.68rem);
+    line-height:1.2; letter-spacing:-.01em; color:var(--blanco);
+    white-space:nowrap; margin:0;
+  }
+  .hero-interior .subtitulo-txt{
+    max-width:none; margin:0; color:#c9d6db;
+    font-size:clamp(.85rem, calc(1vw + .45rem), 1.17rem);
+    white-space:nowrap;
+  }
+  @media (max-width:780px){
+    .hero-interior h1{ white-space:normal; font-size:clamp(1.3rem,5vw,1.8rem); max-width:22ch; }
+    .hero-interior .subtitulo-txt{ white-space:normal; max-width:44ch; }
+  }
+
+  /* --- Introducción a todo lo ancho --- */
+  .intro-doble{
+    background:var(--papel);
+    padding:clamp(26px,4vw,42px) 0;
+  }
+  .intro-doble .intro-texto{ max-width:100%; text-align:center; }
+  .intro-doble .intro-texto p{
+    font-family:var(--cond-r); font-size:1.08rem; line-height:1.2; color:var(--gris-bajo);
+    margin:0 0 14px;
+  }
+  .intro-doble .intro-texto p:last-child{ margin-bottom:0; }
+  .intro-doble .intro-texto strong{ color:var(--azul); font-weight:700; }
+
+  /* --- Contenedor de principios (tarjetas alternadas) --- */
+  .pilares{
+    background:var(--g-soft);
+    padding:clamp(30px,5vw,54px) 0 clamp(14px,3vw,26px);
+  }
+  .pilar-fila{ display:flex; width:100%; margin-bottom:clamp(27px,calc(4.5vw - 3px),45px); }
+  .pilar-fila:last-child{ margin-bottom:0; }
+  .pilar-fila.derecha{ justify-content:flex-end; }
+  .pilar-fila.izquierda{ justify-content:flex-start; }
+
+  .pilar-tarjeta{
+    position:relative;
+    width:100%; max-width:1150px;
+    background:var(--blanco); border-radius:26px;
+    box-shadow:0 24px 50px -28px rgba(0,41,60,.35);
+    border:1px solid var(--papel-2);
+    padding:clamp(28px,4vw,44px) clamp(26px,4vw,46px);
+  }
+  .pilar-tarjeta::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:6px;
+    border-radius:26px 26px 0 0;
+  }
+  .pilar-tarjeta.acento-azul::before{ background:var(--g-hero); }
+  .pilar-tarjeta.acento-verde::before{ background:var(--g-cta); }
+
+  .pilar-num-grande{
+    position:absolute; top:14px; left:22px;
+    font-family:var(--display); font-weight:900;
+    font-size:clamp(4.2rem,8vw,6.8rem); line-height:1;
+    color:var(--papel-2); z-index:0; user-select:none; pointer-events:none;
+  }
+
+  .pilar-tarjeta > .pilar-grid{ position:relative; z-index:1; }
+
+  .pilar-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,4vw,46px); align-items:start;
+  }
+  .pilar-grid.ancho-texto{ grid-template-columns:1.4fr 1fr; }
+  @media (max-width:760px){
+    .pilar-fila{ justify-content:center !important; }
+    .pilar-tarjeta{ max-width:100%; }
+    .pilar-grid, .pilar-grid.ancho-texto{ grid-template-columns:1fr; }
+  }
+
+  .pilar-num{
+    font-family:var(--cond-b); font-weight:700; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--verde-bajo); margin-bottom:14px;
+  }
+  .pilar-encabezado{ display:flex; align-items:center; gap:16px; margin-bottom:18px; }
+  .pilar-encabezado .icobox{
+    flex:none; width:58px; height:58px; border-radius:16px; background:var(--verde);
+    display:flex; align-items:center; justify-content:center; color:var(--azul-bajo);
+    box-shadow:0 10px 20px -10px rgba(87,168,60,.55);
+  }
+  .pilar-encabezado .icobox svg{ width:31px; height:31px; stroke-width:1.6; }
+  .pilar-encabezado h2{
+    font-family:var(--display); font-weight:800; font-size:clamp(1.4rem,2.2vw,1.85rem);
+    line-height:1.2; color:var(--azul-bajo); max-width:18ch;
+  }
+  .pilar-texto{
+    font-family:var(--cond-r); font-size:1.03rem; color:var(--gris-bajo); max-width:48ch; margin:0 0 24px;
+  }
+  .pilar-cierre{
+    font-family:var(--display); font-style:normal; font-weight:700; font-size:1rem; color:var(--azul);
+    max-width:48ch; margin-top:20px; padding-left:18px; border-left:3px solid var(--verde);
+  }
+  .pilar-como{
+    font-family:var(--cond-b); font-weight:700; font-size:.85rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--azul); margin-bottom:14px;
+  }
+  .lista-check.compacta li{ padding:14px 16px; }
+  .lista-check.compacta p{ font-size:1.02rem; }
+
+  /* --- Principio 1: rediseño fiel a la referencia (barra sólida, timeline con
+         punto + conector hacia el número, texto en pastilla gris) --- */
+  #entendemos.pilar-tarjeta::before{ background:var(--azul-bajo); height:9px; }
+  #entendemos .pilar-grid{ gap:clamp(28px,4vw,52px); }
+  #entendemos .pilar-encabezado h2{
+    white-space:nowrap; max-width:none;
+    font-size:clamp(1.15rem,2.6vw,1.85rem);
+  }
+  #entendemos .pilar-num{ margin-bottom:10px; }
+  #entendemos .pilar-texto{
+    max-width:none; font-size:clamp(1.02rem,1.6vw,1.18rem); line-height:1.55;
+    margin-top:20px;
+  }
+  #entendemos .pilar-cierre{
+    white-space:nowrap; max-width:none; margin-top:38px;
+    font-size:1.05rem;
+  }
+  @media (max-width:900px){
+    #entendemos .pilar-encabezado h2,
+    #entendemos .pilar-cierre{ white-space:normal; }
+  }
+
+  /* --- Principio 2: íconos grandes y fijos, superpuestos sobre la pastilla
+         (no dentro, como elementos separados); texto ajustado al ancho real
+         de columna mostrado en la referencia --- */
+  #ejecutamos .pilar-texto{
+    max-width:none; font-size:1.12rem; line-height:1.55;
+  }
+  #ejecutamos .pilar-cierre{
+    max-width:none; font-size:1.05rem;
+  }
+  #ejecutamos .lista-check.compacta{ gap:17px; }
+  #ejecutamos .lista-check.compacta li{
+    position:relative;
+    padding:12px 16px 12px 56px;
+    box-shadow:0 8px 16px -10px rgba(0,41,60,.3);
+  }
+  #ejecutamos .lista-check.compacta li:hover{
+    transform:none; box-shadow:0 8px 16px -10px rgba(0,41,60,.3);
+  }
+  #ejecutamos .lista-check.compacta .icobox{
+    position:absolute; left:-22px; top:50%; transform:translateY(-50%);
+    flex:none; width:64px; height:64px; border-radius:17px;
+    box-shadow:0 12px 24px -8px rgba(0,41,60,.35);
+    z-index:2;
+  }
+  #ejecutamos .lista-check.compacta .icobox svg{ width:28px; height:28px; }
+  #ejecutamos .lista-check.compacta p{ font-size:1.03rem; }
+
+  /* --- Principios 2 y 4: gráfico a la izquierda, texto a la derecha --- */
+  @media (min-width:761px){
+    #ejecutamos .pilar-grid{ grid-template-columns:1fr 1.15fr; }
+    #ejecutamos .pilar-grid > div:nth-child(1),
+    #evolucionamos .pilar-grid > div:nth-child(1){ order:2; }
+    #ejecutamos .pilar-grid > div:nth-child(2),
+    #evolucionamos .pilar-grid > div:nth-child(2){ order:1; }
+  }
+
+  /* --- Principio 3: cuadrícula 2x2 de tarjetas de color (sin íconos,
+         sin círculo central, sin números en las esquinas) --- */
+  .ideas-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px;
+  }
+  .idea-card{
+    border-radius:16px; padding:18px 20px;
+    box-shadow:0 12px 24px -14px rgba(0,41,60,.45);
+  }
+  .idea-card h4{
+    font-family:var(--display); font-weight:800; font-size:1.02rem;
+    color:var(--blanco); margin:0 0 8px;
+  }
+  .idea-card p{
+    font-family:var(--cond-r); font-size:.92rem; line-height:1.42;
+    color:rgba(255,255,255,.92); margin:0;
+  }
+  .idea-card.idea-1{ background:linear-gradient(135deg, var(--azul-bajo), var(--azul)); }
+  .idea-card.idea-2{ background:linear-gradient(135deg, var(--verde-bajo), var(--verde)); }
+  .idea-card.idea-3{ background:linear-gradient(135deg, var(--azul), var(--azul-alto)); }
+  .idea-card.idea-4{ background:linear-gradient(135deg, var(--verde), var(--verde-alto)); }
+  @media (max-width:520px){
+    .ideas-grid{ grid-template-columns:1fr; }
+  }
+
+  /* --- Principio 3: tarjeta y columna de texto más anchas para que el
+         título, cuerpo y punchline quiebren como en la referencia --- */
+  #respondemos.pilar-tarjeta{ max-width:1280px; }
+  #respondemos .pilar-encabezado h2{ max-width:26ch; }
+  #respondemos .pilar-texto{
+    max-width:none; font-size:1.08rem; line-height:1.55;
+  }
+  #respondemos .pilar-cierre{
+    max-width:none; font-size:1.05rem;
+  }
+  @media (min-width:761px){
+    #respondemos .pilar-grid{ grid-template-columns:1.2fr 1fr; }
+  }
+
+  /* --- Principio 4: círculos alineados, mismo tamaño; el grupo se centra
+         respetando márgenes superior e inferior (no se estira borde a borde) --- */
+  #evolucionamos .pilar-grid{ align-items:stretch; }
+  #evolucionamos .pilar-grid > div:last-child{ align-self:center; }
+  .growth-timeline{ display:flex; flex-direction:column; gap:14px; }
+  .growth-item{ display:flex; align-items:center; gap:16px; }
+  .growth-num{
+    flex:none; width:58px; height:58px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:800; font-size:1.05rem; color:var(--blanco);
+    box-shadow:0 10px 20px -10px rgba(0,41,60,.4);
+  }
+  .growth-item:nth-child(1) .growth-num{ background:linear-gradient(135deg,var(--verde-bajo),var(--verde)); }
+  .growth-item:nth-child(2) .growth-num{ background:linear-gradient(135deg,var(--verde),var(--verde-alto)); }
+  .growth-item:nth-child(3) .growth-num{ background:linear-gradient(135deg,var(--azul),var(--azul-alto)); }
+  .growth-texto{
+    flex:1; font-family:var(--cond-r); font-size:1.1rem; color:var(--gris-bajo);
+    line-height:1.4; margin:0;
+  }
+
+  /* --- Mini timeline (gráfico Principio 1): punto sobre la línea, conector
+         corto hacia el número, número, pastilla de texto --- */
+  .mini-timeline{ position:relative; padding-left:34px; }
+  .mini-timeline::before{
+    content:""; position:absolute; left:5px; top:10px; bottom:10px; width:2px;
+    background:var(--papel-2);
+  }
+  .mini-timeline-item{
+    position:relative; display:flex; align-items:center; gap:16px;
+  }
+  .mini-timeline-item + .mini-timeline-item{ margin-top:30px; }
+  .mini-timeline-item::before{
+    content:""; position:absolute; left:-29px; top:50%; transform:translateY(-50%);
+    width:16px; height:16px; border-radius:50%; border:3px solid var(--blanco);
+    box-shadow:0 0 0 2px var(--dot-color, var(--verde));
+    background:var(--dot-color, var(--verde));
+    z-index:2;
+  }
+  .mini-timeline-item::after{
+    content:""; position:absolute; left:-21px; top:50%; width:21px; height:2px;
+    background:var(--papel-2); transform:translateY(-50%); z-index:1;
+  }
+  .mini-timeline-item:nth-child(1){ --dot-color: var(--azul-bajo); }
+  .mini-timeline-item:nth-child(2){ --dot-color: var(--verde-bajo); }
+  .mini-timeline-item:nth-child(3){ --dot-color: var(--azul-bajo); }
+  .mini-timeline-num{
+    flex:none; width:60px; height:60px; border-radius:50%; background:var(--blanco);
+    border:2px solid var(--dot-color, var(--verde));
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:800; font-size:1.1rem; color:var(--azul-bajo);
+    box-shadow:0 6px 14px -8px rgba(0,41,60,.2);
+  }
+  .mini-timeline-texto{
+    flex:1; background:var(--papel); border-radius:12px;
+    padding:16px 20px; font-family:var(--cond-r); font-size:1.02rem; color:var(--gris-bajo); line-height:1.4;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- ICONOS: sprite SVG removido. Agregar aqui <img src="URL-DEL-WEBHOST"> por cada icono cuando este disponible. -->
+
+<!-- ============ HEADER ============ -->
+<header class="principal">
+  <div class="wrap nav-fila">
+    <a href="index.html" class="logo">
+      <img src="imagenes/logo-header.png" alt="EXECON" style="height:38px;width:auto;display:block">
+    </a>
+
+    <nav class="principal-links" id="navPrincipal">
+      <div class="item">
+        <a href="servicios.html">Servicios</a>
+        <div class="submenu">
+          <a href="internet-celular-administrado.html"><img src="imagenes/icono-ica.png" alt="" style="width:16px;height:16px">
+Internet Celular Administrado</a>
+          <a href="ingenieria-de-campo.html" ><img src="imagenes/icono-fs.png" alt="" style="width:16px;height:16px">Ingeniería de Campo</a>
+          <a href="redes-lan.html"><img src="imagenes/icono-lan.png" alt="" style="width:16px;height:16px">Redes LAN</a>
+          <a href="wifi-alto-desempeño.html"><img src="imagenes/icono-empresarial.png" alt="" style="width:16px;height:16px">WiFi de Alto Desempeño</a>
+          <a href="sd-wan.html"><img src="imagenes/icono-sdwan.png" alt="" style="width:16px;height:16px">SD-WAN</a>
+        </div>
+      </div>
+      <div class="item"><a href="industrias.html">Industrias</a></div>
+      <div class="item"><a href="por-que-elegir-execon.html">¿Por qué elegir EXECON?</a></div>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="hablemos-de-tu-operacion.html" class="btn btn-primario">Hablemos de tu operación</a>
+      <button class="hamburguesa" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
+        <span id="iconoMenu">&#9776;</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO INTERIOR (banner) ============ -->
+<section class="hero-interior" id="top">
+  <div class="hero-interior-foto" role="img" aria-label="Equipo de EXECON colaborando con un cliente"></div>
+  <div class="hero-interior-glow"></div>
+  <div class="wrap">
+    <div class="raya centrada"></div>
+    <h1>Así trabajamos con nuestros clientes</h1>
+    <p class="subtitulo-txt">La tecnología es importante. La forma en que acompañamos a nuestros clientes es lo que hace la diferencia.</p>
+  </div>
+</section>
+
+<!-- ============ INTRODUCCIÓN (a todo lo ancho) ============ -->
+<section class="intro-doble">
+  <div class="wrap">
+    <div class="intro-texto">
+      <p>La infraestructura de redes y telecomunicaciones es clave para mantener una operación en marcha. Pero cuando surge un reto, lo que realmente marca la diferencia es contar con un equipo que responda, dé seguimiento y acompañe a tu área de TI.</p>
+      <p>En EXECON creemos que un buen servicio se construye todos los días. <strong>Así es como lo hacemos.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPIOS (tarjetas alternadas) ============ -->
+<section class="pilares" id="principios">
+  <div class="wrap">
+
+    <!-- PRINCIPIO 1: ENTENDEMOS ANTES DE PROPONER -->
+    <div class="pilar-fila derecha">
+      <article class="pilar-tarjeta acento-azul" id="entendemos">
+        <span class="pilar-num-grande">01</span>
+        <div class="pilar-grid">
+          <div>
+            <div class="pilar-num">Principio 01</div>
+            <div class="pilar-encabezado">
+              <div class="icobox"><img src="imagenes/icono-checkmark.png" alt="" width="31" height="31"></div>
+              <h2>Entendemos antes de proponer</h2>
+            </div>
+            <p class="pilar-texto">Cada empresa tiene una operación diferente. Por eso, antes de recomendar una solución, buscamos comprender tus procesos, los retos de tu área de TI y los objetivos de tu negocio.</p>
+            <p class="pilar-cierre">Porque una buena solución comienza entendiendo el problema correcto.</p>
+          </div>
+          <div>
+            <div class="pilar-como">¿Cómo lo hacemos?</div>
+            <div class="mini-timeline">
+              <div class="mini-timeline-item">
+                <div class="mini-timeline-num">01</div>
+                <div class="mini-timeline-texto">Conocemos el contexto y las necesidades de tu operación.</div>
+              </div>
+              <div class="mini-timeline-item">
+                <div class="mini-timeline-num">02</div>
+                <div class="mini-timeline-texto">Analizamos los desafíos de tu infraestructura.</div>
+              </div>
+              <div class="mini-timeline-item">
+                <div class="mini-timeline-num">03</div>
+                <div class="mini-timeline-texto">Diseñamos soluciones alineadas a tu forma de trabajar y a tu crecimiento.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- PRINCIPIO 2: EJECUTAMOS CON CONSISTENCIA -->
+    <div class="pilar-fila izquierda">
+      <article class="pilar-tarjeta acento-verde" id="ejecutamos">
+        <span class="pilar-num-grande">02</span>
+        <div class="pilar-grid">
+          <div>
+            <div class="pilar-num">Principio 02</div>
+            <div class="pilar-encabezado">
+              <div class="icobox"><img src="imagenes/icono-checkmark.png" alt="" width="31" height="31"></div>
+              <h2>Ejecutamos con consistencia</h2>
+            </div>
+            <p class="pilar-texto">La calidad de un servicio no debería cambiar de una ciudad a otra. Por eso trabajamos con procesos estandarizados que nos permiten ofrecer una experiencia consistente en cada implementación, proyecto o servicio.</p>
+            <p class="pilar-cierre">Buscamos que cada intervención refleje el mismo nivel de calidad, sin importar dónde ocurra.</p>
+          </div>
+          <div>
+            <div class="pilar-como">Lo que garantizamos</div>
+            <ul class="lista-check compacta">
+              <li><div class="icobox"><img src="imagenes/icono-pin.png" alt="" width="28" height="28"></div><p>Cobertura nacional con ingenieros en 52 ciudades.</p></li>
+              <li><div class="icobox"><img src="imagenes/icono-documento-check.png" alt="" width="28" height="28"></div><p>Procesos documentados y metodologías estandarizadas.</p></li>
+              <li><div class="icobox"><img src="imagenes/icono-lupa-documento.png" alt="" width="28" height="28"></div><p>Supervisión y seguimiento durante la ejecución.</p></li>
+              <li><div class="icobox"><img src="imagenes/icono-registro.png" alt="" width="28" height="28"></div><p>Documentación de las actividades realizadas.</p></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- PRINCIPIO 3: RESPONDEMOS CUANDO MÁS LO NECESITAS -->
+    <div class="pilar-fila derecha">
+      <article class="pilar-tarjeta acento-azul" id="respondemos">
+        <span class="pilar-num-grande">03</span>
+        <div class="pilar-grid">
+          <div>
+            <div class="pilar-num">Principio 03</div>
+            <div class="pilar-encabezado">
+              <div class="icobox"><img src="imagenes/icono-checkmark.png" alt="" width="31" height="31"></div>
+              <h2>Respondemos cuando más lo necesitas</h2>
+            </div>
+            <p class="pilar-texto">Cuando ocurre un incidente, la rapidez es importante. Pero también lo es saber qué está pasando y quién está atendiendo la situación. Nuestro compromiso es acompañarte desde el primer reporte hasta la resolución.</p>
+            <p class="pilar-cierre">Resolver un incidente es importante. Mantenerte informado durante todo el proceso también.</p>
+          </div>
+          <div>
+            <div class="pilar-como">Nuestro equipo te acompaña mediante</div>
+            <div class="ideas-grid">
+              <div class="idea-card idea-1">
+                <h4>Monitoreo 7x24</h4>
+                <p>A través de nuestro NOC y Mesa de Servicio.</p>
+              </div>
+              <div class="idea-card idea-2">
+                <h4>Coordinación</h4>
+                <p>De la atención con nuestros equipos especializados.</p>
+              </div>
+              <div class="idea-card idea-3">
+                <h4>Comunicación</h4>
+                <p>Constante sobre el avance de cada caso.</p>
+              </div>
+              <div class="idea-card idea-4">
+                <h4>Seguimiento</h4>
+                <p>Hasta confirmar que el servicio ha sido restablecido.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- PRINCIPIO 4: EVOLUCIONAMOS JUNTO CONTIGO -->
+    <div class="pilar-fila izquierda">
+      <article class="pilar-tarjeta acento-verde" id="evolucionamos">
+        <span class="pilar-num-grande">04</span>
+        <div class="pilar-grid">
+          <div>
+            <div class="pilar-num">Principio 04</div>
+            <div class="pilar-encabezado">
+              <div class="icobox"><img src="imagenes/icono-checkmark.png" alt="" width="31" height="31"></div>
+              <h2>Evolucionamos junto contigo</h2>
+            </div>
+            <p class="pilar-texto">Las necesidades de una empresa cambian con el tiempo. Por eso buscamos que nuestra relación con cada cliente también evolucione. Más que mantener un servicio, queremos ayudarte a fortalecer tu infraestructura conforme crece tu operación.</p>
+            <p class="pilar-cierre">Creemos en relaciones de largo plazo, construidas a través de resultados y confianza.</p>
+          </div>
+          <div>
+            <div class="pilar-como">Cómo seguimos creciendo juntos</div>
+            <div class="growth-timeline">
+              <div class="growth-item">
+                <div class="growth-num">01</div>
+                <p class="growth-texto">Revisamos continuamente nuestros procesos para identificar oportunidades de mejora.</p>
+              </div>
+              <div class="growth-item">
+                <div class="growth-num">02</div>
+                <p class="growth-texto">Operamos bajo procesos certificados conforme a ISO/IEC 20000.</p>
+              </div>
+              <div class="growth-item">
+                <div class="growth-num">03</div>
+                <p class="growth-texto">Acompañamos nuevos proyectos, aperturas y necesidades conforme evolucionan tus objetivos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-final" id="contacto">
+  <div class="wrap">
+    <div class="cta-final-foto" role="img" aria-label="Equipo conversando sobre una operación de negocio"></div>
+    <div class="cta-final-contenido">
+      <h2 class="titulo">Conozcamos tu operación</h2>
+      <p class="subtitulo-txt">Cada empresa enfrenta retos diferentes. Nos gustaría conocer los tuyos y mostrarte cómo podemos convertirnos en la extensión de tu área de TI.</p>
+      <a href="hablemos-de-tu-operacion.html" class="btn btn-primario">Hablemos de tu operación. <!-- icono --></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ FOOTER ============ -->
+<footer id="trabajamos">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" data-enlace="Inicio" class="logo">
+          <img src="imagenes/logo-footer.png" alt="EXECON" style="height:56px;width:auto;display:block">
+        </a>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul class="footer-nav-paginas">
+          <li><a href="asi-trabajamos-con-nuestros-clientes.html">Así es como trabajamos con nuestros clientes</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="por-que-elegir-execon.html">¿Por qué elegir EXECON?</a></li>
+          <li><a href="industrias.html">Industrias</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <div class="footer-contacto-fila">
+          <img src="imagenes/pin.png" alt="" style="width:15px;height:15px">
+          <address class="footer-direccion">
+            Edificio EXECON, Calle José Benítez 2190 Piso 3, Colonia Obispado. C.P. 64060, Monterrey, Nuevo León, México
+          </address>
+        </div>
+        <div class="footer-contacto-fila">
+          <img src="imagenes/telefono.png" alt="" style="width:15px;height:15px">
+          <a href="tel:+528182151900">+52 81 8215 1900</a>
+        </div>
+        <div class="footer-contacto-fila">
+          <img src="imagenes/correo.png" alt="" style="width:15px;height:15px">
+          <a href="mailto:info@execon.mx">info@execon.mx</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-legal">
+      <span>2026. Consultoría y Asesoría de Redes SA de CV. Todos los derechos reservados.</span>
+      <span class="separador">|</span>
+      <a href="#" data-enlace="Aviso de Privacidad" class="footer-aviso">Aviso de Privacidad</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  const btnMenu = document.getElementById('btnMenu');
+  const nav = document.getElementById('navPrincipal');
+  btnMenu.addEventListener('click', () => {
+    const abierto = nav.classList.toggle('abierto');
+    btnMenu.setAttribute('aria-expanded', abierto);
+    document.getElementById('iconoMenu').innerHTML = abierto ? '&#10005;' : '&#9776;';
+  });
+  document.querySelectorAll('.principal-links .item').forEach(item=>{
+    item.addEventListener('click', (e)=>{
+      if(window.innerWidth <= 980 && item.querySelector('.submenu')){
+        if(e.target.closest('.submenu')) return;
+        e.preventDefault();
+        item.classList.toggle('abierto');
+      }
+    });
+  });
+  document.querySelectorAll('.principal-links a').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      if(window.innerWidth <= 980){ nav.classList.remove('abierto'); btnMenu.setAttribute('aria-expanded','false'); document.getElementById('iconoMenu').innerHTML = '&#9776;'; }
+    });
+  });
+  const observador = new IntersectionObserver((entradas)=>{
+    entradas.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('mostrar'); observador.unobserve(en.target); } });
+  }, { threshold:.15 });
+  document.querySelectorAll('.reveal').forEach(el=> observador.observe(el));
+</script>
+</body>
+</html>

@@ -76,11 +76,11 @@ Internet Celular Administrado</a>
       <h2 class="titulo titulo-ancho" style="margin:0 auto;">Cuéntanos sobre tu operación</h2>
     </div>
 
-    <form class="form-tarjeta">
+    <form class="form-tarjeta" method="post" action="https://www.execon.mx/public/envia.php" target="enviaFrame">
       <div class="campo-grid">
         <div class="campo">
           <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+          <input type="text" id="nombre" name="name" autocomplete="name" required>
         </div>
         <div class="campo">
           <label for="empresa">Empresa</label>
@@ -88,15 +88,28 @@ Internet Celular Administrado</a>
         </div>
         <div class="campo">
           <label for="correo">Correo electrónico</label>
-          <input type="email" id="correo" name="correo" autocomplete="email" required>
+          <input type="email" id="correo" name="mail" autocomplete="email" required>
         </div>
         <div class="campo">
           <label for="telefono">Teléfono</label>
-          <input type="tel" id="telefono" name="telefono" autocomplete="tel">
+          <input type="tel" id="telefono" name="phone" autocomplete="tel">
+        </div>
+        <div class="campo full">
+          <label for="servicio">Servicio de interés</label>
+          <select id="servicio" name="service">
+            <option value="">Servicio de interés</option>
+            <option value="Wifi">Wi-Fi</option>
+            <option value="WifiVisitantes">Wi-Fi para visitantes</option>
+            <option value="Enlaces">Enlaces de datos</option>
+            <option value="Lan">Redes LAN</option>
+            <option value="Sdwan">Redes SD-WAN</option>
+            <option value="FieldService">Field Services</option>
+            <option value="Otro">Otro</option>
+          </select>
         </div>
         <div class="campo full">
           <label for="mensaje">Cuéntanos sobre tu operación</label>
-          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué está sucediendo en tu operación..."></textarea>
+          <textarea id="mensaje" name="comments" placeholder="Cuéntanos qué está sucediendo en tu operación..."></textarea>
         </div>
       </div>
 
@@ -105,6 +118,10 @@ Internet Celular Administrado</a>
         <button type="submit" class="btn btn-primario">Enviar mi información <img src="imagenes/cta-flecha.png" alt="" style="width:16px;height:16px;" width="32" height="32" loading="lazy" decoding="async"></button>
       </div>
     </form>
+    <div class="form-confirmacion" hidden>
+      <h2 class="titulo">¡Gracias!</h2>
+      <p class="subtitulo-txt">Hemos recibido tu información y nos pondremos en contacto contigo pronto.</p>
+    </div>
   </div>
 </section>
 
@@ -236,13 +253,25 @@ Internet Celular Administrado</a>
   });
 
   const formulario = document.querySelector('.form-tarjeta');
+  const enviaFrame = document.querySelector('iframe[name="enviaFrame"]');
+  const confirmacion = document.querySelector('.form-confirmacion');
+  let enviando = false;
   if(formulario){
-    formulario.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      alert('Gracias. Hemos recibido tu información y nos pondremos en contacto contigo pronto.');
-      formulario.reset();
+    formulario.addEventListener('submit', ()=>{
+      const emp = document.getElementById('empresa').value.trim();
+      const msg = document.getElementById('mensaje');
+      if(emp && !msg.value.startsWith('Empresa:')) msg.value = 'Empresa: ' + emp + '\n\n' + msg.value;
+      enviando = true;
+    });
+    enviaFrame.addEventListener('load', ()=>{
+      if(!enviando) return;
+      enviando = false;
+      formulario.hidden = true;
+      confirmacion.hidden = false;
+      confirmacion.scrollIntoView({behavior:'smooth', block:'center'});
     });
   }
 </script>
+<iframe name="enviaFrame" style="display:none" title="Envío de formulario"></iframe>
 </body>
 </html>

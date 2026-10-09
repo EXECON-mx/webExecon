@@ -119,8 +119,9 @@ Internet Celular Administrado</a>
       </div>
     </form>
     <div class="form-confirmacion" hidden>
+      <img src="imagenes/checkmark-verde.png" alt="" width="48" height="48" decoding="async">
       <h2 class="titulo">¡Gracias!</h2>
-      <p class="subtitulo-txt">Hemos recibido tu información y nos pondremos en contacto contigo pronto.</p>
+      <p class="subtitulo-txt">Tu contacto fue enviado con éxito. Hemos recibido tu información y nos pondremos en contacto contigo pronto.</p>
     </div>
   </div>
 </section>
@@ -255,20 +256,33 @@ Internet Celular Administrado</a>
   const formulario = document.querySelector('.form-tarjeta');
   const enviaFrame = document.querySelector('iframe[name="enviaFrame"]');
   const confirmacion = document.querySelector('.form-confirmacion');
+  const COOLDOWN_MS = 10 * 60 * 1000;
   let enviando = false;
+  let confirmado = false;
+  const mostrarConfirmacion = ()=>{
+    if(confirmado) return;
+    confirmado = true;
+    localStorage.setItem('execon-contacto', Date.now());
+    formulario.hidden = true;
+    confirmacion.hidden = false;
+    confirmacion.scrollIntoView({behavior:'smooth', block:'center'});
+  };
   if(formulario){
-    formulario.addEventListener('submit', ()=>{
+    const btnEnviar = formulario.querySelector('button[type="submit"]');
+    const ultimo = parseInt(localStorage.getItem('execon-contacto') || '0', 10);
+    if(Date.now() - ultimo < COOLDOWN_MS) mostrarConfirmacion();
+    formulario.addEventListener('submit', (e)=>{
+      if(enviando){ e.preventDefault(); return; }
+      enviando = true;
+      btnEnviar.disabled = true;
+      btnEnviar.innerHTML = 'Enviando...';
       const emp = document.getElementById('empresa').value.trim();
       const msg = document.getElementById('mensaje');
       if(emp && !msg.value.startsWith('Empresa:')) msg.value = 'Empresa: ' + emp + '\n\n' + msg.value;
-      enviando = true;
+      setTimeout(mostrarConfirmacion, 5000);
     });
     enviaFrame.addEventListener('load', ()=>{
-      if(!enviando) return;
-      enviando = false;
-      formulario.hidden = true;
-      confirmacion.hidden = false;
-      confirmacion.scrollIntoView({behavior:'smooth', block:'center'});
+      if(enviando) mostrarConfirmacion();
     });
   }
 </script>

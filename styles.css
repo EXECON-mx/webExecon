@@ -920,8 +920,10 @@ section.on-dark .cita-destacada{ color:var(--blanco); border-left-color:var(--ve
 }
 .campo textarea{ resize:vertical; min-height:120px; font-family:var(--cond-r); }
 .form-confirmacion{ text-align:center; padding:clamp(24px,4vw,44px) 20px; }
+.form-confirmacion img{ margin-bottom:14px; }
 .form-confirmacion .titulo{ margin:0 auto 10px; }
 .form-confirmacion .subtitulo-txt{ margin:0 auto; }
+.form-pie .btn[disabled]{ opacity:.6; cursor:not-allowed; }
 .form-pie{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-top:26px; }
 .form-pie .btn{ margin:0; }
 .form-nota{ font-size:.85rem; color:#c9d6db; white-space:nowrap; }

@@ -493,7 +493,7 @@ section.on-blue .subtitulo-txt strong{ color:var(--verde-alto); }
 }
 
 /* ============ 11. FOOTER ============ */
-footer{ background:var(--azul-bajo); color:#a9bcc3; padding:28px 0 14px; }
+footer{ background:var(--azul-bajo); color:#a9bcc3; padding:28px 0 14px; content-visibility:auto; contain-intrinsic-size:auto 420px; }
 .footer-grid{ display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:26px; align-items:start; }
 footer .logo{ margin-bottom:12px; }
 footer h4{ font-family:var(--cond-b); font-weight:700; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--blanco); margin-bottom:12px; }

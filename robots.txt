@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://execon-mx.github.io/webExecon/sitemap.xml

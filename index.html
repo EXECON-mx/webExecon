@@ -359,11 +359,6 @@ Internet Celular Administrado</a>
       if(window.innerWidth <= 980){ nav.classList.remove('abierto'); btnMenu.setAttribute('aria-expanded','false'); document.getElementById('iconoMenu').innerHTML = '&#9776;'; }
     });
   });
-  // Todos los enlaces son placeholders: no deben redirigir dentro de la misma página.
-  // Reemplazar el "#" de cada href por la URL real (ver atributo data-enlace) cuando esté disponible.
-  document.querySelectorAll('a[data-enlace]').forEach(a=>{
-    a.addEventListener('click', (e)=>{ e.preventDefault(); });
-  });
   const observador = new IntersectionObserver((entradas)=>{
     entradas.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('mostrar'); observador.unobserve(en.target); } });
   }, { threshold:.15 });

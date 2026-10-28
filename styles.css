@@ -340,11 +340,11 @@ nav.principal-links > .item:hover .submenu{ opacity:1; visibility:visible; trans
 section{ position:relative; }
 section.claro{ background:var(--g-soft); }
 .pad{ padding:clamp(32px,5vw,58px) 0; }
-/* Compartida entre redes-lan.html y wifi-alto-desempeño.html (mismo valor en ambas) */
+/* Compartida entre redes-lan.html y wifi-alto-desempeno.html (mismo valor en ambas) */
 .destacado-band{ padding:calc(clamp(32px,5vw,58px) - 4px) 0; }
 /* Fondo de respaldo sólido siempre presente; cada página con variante distinta
    la sobreescribe en su sección de página (punto 12) */
-/* on-blue: variante propia de wifi-alto-desempeño.html — antes sin fondo definido (bug de contraste),
+/* on-blue: variante propia de wifi-alto-desempeno.html — antes sin fondo definido (bug de contraste),
    usa el mismo respaldo que on-dark */
 section.on-dark,
 section.on-blue{ background-color:var(--azul-bajo); color:var(--blanco); }
@@ -1192,13 +1192,13 @@ section.migraciones-band{ padding-top:clamp(20px,3vw,32px); padding-bottom:clamp
 .experiencia-texto-sdwan p.subtitulo-txt{ max-width:56ch; margin-top:16px; }
 .experiencia-texto-sdwan p.subtitulo-txt + p.subtitulo-txt{ margin-top:14px; }
 
-/* --- Compartida entre sd-wan.html y wifi-alto-desempeño.html --- */
+/* --- Compartida entre sd-wan.html y wifi-alto-desempeno.html --- */
 .proceso-num{
   font-family:var(--display); font-weight:900; font-size:1.9rem; line-height:1;
   color:var(--verde-bajo); flex:none; min-width:44px;
 }
 
-/* --- wifi-alto-desempeño.html --- */
+/* --- wifi-alto-desempeno.html --- */
 .proceso-wrap{ display:grid; grid-template-columns:1.55fr 1fr; gap:clamp(26px,4vw,44px); align-items:stretch; margin-top:8px; }
 .proceso-grid{ display:grid; grid-template-columns:1fr; gap:16px; }
 .proceso-item{

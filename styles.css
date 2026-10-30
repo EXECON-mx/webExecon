@@ -1230,3 +1230,15 @@ section.migraciones-band{ padding-top:clamp(20px,3vw,32px); padding-bottom:clamp
 @media (max-width:620px){ .espera-grid{ grid-template-columns:1fr; } }
 
 /* .destacado / .destacado-izq eliminados de esta página: código muerto, no se usaban */
+@media (max-width:560px){
+  .nav-cta .btn-primario{ display:none; }
+}
+@media (max-width:760px){
+  .industrias-grid, .faq-grid, .experiencia-grid-sdwan{ grid-template-columns:1fr; }
+  .enlace-texto h2.titulo span{ white-space:normal !important; }
+  .industrias-grid .btn{ white-space:normal; text-align:center; }
+  .stat-item-sdwan .stat-linea{ white-space:normal; }
+}
+@media (max-width:400px){
+  .cifras-grid{ grid-template-columns:1fr; }
+}

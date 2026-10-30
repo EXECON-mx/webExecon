@@ -19,6 +19,12 @@
 <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.min.css">
+<style>
+  /* Subtítulo bajo el título en las tarjetas de Soluciones */
+  .card-encabezado .card-titulos{ display:flex; flex-direction:column; justify-content:center; gap:2px; min-width:0; }
+  .card-encabezado .card-titulos h3{ margin:0; }
+  .card-inicio .card-encabezado .card-subtitulo{ margin:0; font-size:.9rem; line-height:1.3; opacity:.75; }
+</style>
 </head>
 <body>
 
@@ -141,21 +147,30 @@ Internet Celular Administrado</a>
       <div class="card-inicio reveal">
         <div class="card-encabezado">
          <div class="icobox"><img src="imagenes/icono_lan_46.png" alt="" style="width:23px;height:23px" width="46" height="46" loading="lazy" decoding="async"></div>
-         <h3><a href="redes-lan.html">Redes Lan</a></h3>
+         <div class="card-titulos">
+           <h3><a href="redes-lan.html">Redes LAN</a></h3>
+           <p class="card-subtitulo">Conectividad para tu negocio</p>
+         </div>
         </div>
         <p>La infraestructura sobre la que opera tu negocio.</p>
       </div>
       <div class="card-inicio reveal">
         <div class="card-encabezado">
         <div class="icobox"><img src="imagenes/icono_empresarial_46.png" alt="" style="width:23px;height:23px" width="46" height="46" loading="lazy" decoding="async"></div>
-        <h3><a href="wifi-alto-desempeno.html">WiFi de Alto Desempeño</a></h3>
+        <div class="card-titulos">
+          <h3><a href="wifi-alto-desempeno.html">WiFi de Alto Desempeño</a></h3>
+          <p class="card-subtitulo">Rápido y confiable</p>
+        </div>
       </div>
         <p>Una buena red WiFi se mide por la experiencia de quienes la utilizan.</p>
       </div>
       <div class="card-inicio reveal">
         <div class="card-encabezado">
         <div class="icobox"><img src="imagenes/icono_sdwan_46.png" alt="" style="width:23px;height:23px" width="46" height="46" loading="lazy" decoding="async"></div>
-        <h3><a href="sd-wan.html">SD-WAN</a></h3>
+        <div class="card-titulos">
+          <h3><a href="sd-wan.html">SD-WAN</a></h3>
+          <p class="card-subtitulo">Conecta todas tus sucursales</p>
+        </div>
       </div>
         <p>Tu negocio cambia todos los días. Tu red también debería poder hacerlo.</p>
       </div>

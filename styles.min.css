@@ -2,7 +2,7 @@
   .nav-cta .btn-primario{ display:none; }
 }
 @media (max-width:760px){
-  .industrias-grid, .faq-grid, .experiencia-grid-sdwan{ grid-template-columns:1fr; }
+  .industrias-grid, .faq-grid, .experiencia-grid-sdwan, .experiencia-grid-internetcelular{ grid-template-columns:1fr; }
   .enlace-texto h2.titulo span{ white-space:normal !important; }
   .industrias-grid .btn{ white-space:normal; text-align:center; }
   .stat-item-sdwan .stat-linea{ white-space:normal; }
